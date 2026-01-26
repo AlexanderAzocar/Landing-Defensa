@@ -3,6 +3,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ========================================
+   DEFENSA INTEGRAL DE LA NACIÓN - UNEFA
+   Paleta Institucional Militar
+   ======================================== */
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -42,75 +47,176 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Colores Institucionales UNEFA */
+  --color-olive: var(--olive);
+  --color-olive-dark: var(--olive-dark);
+  --color-olive-light: var(--olive-light);
+  --color-patriot-red: var(--patriot-red);
+  --color-unefa-blue: var(--unefa-blue);
+  --color-gold: var(--gold);
 }
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+
+  /* Paleta Militar Institucional */
+  --olive: #4b5320;
+  --olive-dark: #2d3311;
+  --olive-light: #6b7530;
+  --patriot-red: #c41e3a;
+  --unefa-blue: #003366;
+  --gold: #d4af37;
+
+  /* Tema Claro - Institucional */
+  --background: #fafafa;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #4b5320;
+  --primary-foreground: #ffffff;
+  --secondary: #003366;
+  --secondary-foreground: #ffffff;
+  --muted: #f3f4f0;
+  --muted-foreground: #5a5a5a;
+  --accent: #c41e3a;
+  --accent-foreground: #ffffff;
+  --destructive: #c41e3a;
+  --border: #d4d4d4;
+  --input: #e5e5e5;
+  --ring: #4b5320;
+  --chart-1: #4b5320;
+  --chart-2: #003366;
+  --chart-3: #c41e3a;
+  --chart-4: #d4af37;
+  --chart-5: #6b7530;
+  --sidebar: #2d3311;
+  --sidebar-foreground: #f0f0f0;
+  --sidebar-primary: #4b5320;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #6b7530;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #4b5320;
+  --sidebar-ring: #d4af37;
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  /* Tema Oscuro - Centro de Comando */
+  --background: #0a0c07;
+  --foreground: #e8e8e8;
+  --card: #141810;
+  --card-foreground: #e8e8e8;
+  --popover: #1a1f14;
+  --popover-foreground: #e8e8e8;
+  --primary: #6b7530;
+  --primary-foreground: #ffffff;
+  --secondary: #1a4d80;
+  --secondary-foreground: #ffffff;
+  --muted: #1f2418;
+  --muted-foreground: #a0a0a0;
+  --accent: #c41e3a;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --border: #2d3311;
+  --input: #2d3311;
+  --ring: #6b7530;
+  --chart-1: #6b7530;
+  --chart-2: #1a4d80;
+  --chart-3: #c41e3a;
+  --chart-4: #d4af37;
+  --chart-5: #4b5320;
+  --sidebar: #0a0c07;
+  --sidebar-foreground: #e8e8e8;
+  --sidebar-primary: #6b7530;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #2d3311;
+  --sidebar-accent-foreground: #e8e8e8;
+  --sidebar-border: #2d3311;
+  --sidebar-ring: #d4af37;
+}
+
+/* ========================================
+   Estilos Globales y Transiciones
+   ======================================== */
+
+* {
+  @apply border-border;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+}
+
+/* Transiciones suaves entre páginas */
+.page-transition {
+  animation: fadeSlideIn 0.4s ease-out;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll suave global */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Estilos para scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--olive-dark);
+}
+
+/* Efectos de glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(20, 24, 16, 0.8);
+  border: 1px solid rgba(75, 83, 32, 0.3);
+}
+
+/* Tipografía militar/técnica */
+.font-military {
+  font-family: "Oswald", "Impact", sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Gradiente institucional */
+.gradient-military {
+  background: linear-gradient(
+    135deg,
+    var(--olive-dark) 0%,
+    var(--olive) 50%,
+    var(--olive-light) 100%
+  );
 }
 
 @layer base {

@@ -1,0 +1,141 @@
+/* ========================================
+   App.css - Estilos Complementarios
+   Aplicación Defensa Integral UNEFA
+   ======================================== */
+
+/* Importar fuente profesional de Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap");
+
+/* Variables de animación */
+:root {
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Mejorar rendering de fuentes */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    system-ui,
+    sans-serif;
+}
+
+/* Headings con fuente moderna */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Efectos de hover profesionales */
+.hover-lift {
+  transition:
+    transform 0.3s var(--ease-smooth),
+    box-shadow 0.3s var(--ease-smooth);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+/* Sombras profesionales */
+.shadow-soft {
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-medium {
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-strong {
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    0 16px 48px rgba(0, 0, 0, 0.15);
+}
+
+/* Gradientes militares profesionales */
+.gradient-command {
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+}
+
+.gradient-olive-dark {
+  background: linear-gradient(135deg, #2d3311 0%, #4b5320 50%, #6b7530 100%);
+}
+
+/* Bordes con efecto glow sutil */
+.glow-border-green {
+  border: 1px solid rgba(75, 83, 32, 0.3);
+  box-shadow: 0 0 20px rgba(75, 83, 32, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.glow-border-green:hover {
+  box-shadow: 0 0 30px rgba(75, 83, 32, 0.2);
+}
+
+/* Backdrop blur mejorado */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .glass-effect {
+  background: rgba(20, 24, 16, 0.7);
+  border: 1px solid rgba(75, 83, 32, 0.2);
+}
+
+/* Animaciones suaves de entrada */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideInUp 0.6s var(--ease-smooth) forwards;
+}
+
+/* Skeleton loading para mejor UX */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Focus states mejorados para accesibilidad */
+*:focus-visible {
+  outline: 2px solid #4b5320;
+  outline-offset: 2px;
+  border-radius: 4px;
+}

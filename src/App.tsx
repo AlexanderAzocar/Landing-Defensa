@@ -1,16 +1,46 @@
-import "./App.css";
-import { Button } from "@/components/ui/button";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// Layout
+import MainLayout from "@/components/template/mainLayout";
+
+// Páginas existentes
+import Home from "@/pages/home";
+import DoctrinaPage from "@/pages/doctrinaPage";
+import AmbitosPage from "@/pages/ambitosPage";
+import UnionPage from "@/pages/unionPage";
+
+// Páginas NUEVAS (Asegúrate de crearlas primero)
+import CalendarPage from "@/pages/calendarPage";
+import ResourcesPage from "@/pages/resourcesPage";
 
 function App() {
   return (
-    <>
-      <h1 className="flex justify-center items-center text-center text-3xl font-bold mt-80">
-        Cristhian Sapo
-      </h1>
-      <div className="flex flex-col items-center justify-center mt-20">
-        <Button>Si Eres</Button>
-      </div>{" "}
-    </>
+    <BrowserRouter>
+      <Routes>
+        {/* El MainLayout envuelve todas estas rutas */}
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Home />} />
+
+          <Route path="doctrina" element={<DoctrinaPage />} />
+          <Route path="ambitos" element={<AmbitosPage />} />
+          <Route path="union" element={<UnionPage />} />
+
+          {/* NUEVAS RUTAS AÑADIDAS */}
+          <Route path="calendario" element={<CalendarPage />} />
+          <Route path="recursos" element={<ResourcesPage />} />
+
+          {/* Página 404 opcional */}
+          <Route
+            path="*"
+            element={
+              <div className="p-10 text-center">
+                404 - Ruta no encontrada, cadete.
+              </div>
+            }
+          />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
