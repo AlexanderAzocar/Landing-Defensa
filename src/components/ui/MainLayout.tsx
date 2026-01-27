@@ -2,10 +2,11 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 import {
   Menu,
   Shield,
-  User,
-  LogOut,
-  Settings,
   ChevronRight,
+  BookOpen,
+  Mail,
+  Info,
+  ExternalLink,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -16,19 +17,9 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Separator } from "@/components/ui/separator";
 import VirtualAssistant from "@/components/assistant/VirtualAssistant";
 
-// Interfaz para items de menú
 interface NavItem {
   label: string;
   path: string;
@@ -42,6 +33,7 @@ export default function MainLayout() {
     { label: "Doctrina", path: "/doctrina" },
     { label: "Ámbitos", path: "/ambitos" },
     { label: "Unión Cívico-Militar", path: "/union" },
+    { label: "Recursos", path: "/recursos" },
   ];
 
   return (
@@ -90,44 +82,15 @@ export default function MainLayout() {
 
           {/* ACTIONS & MOBILE */}
           <div className="flex items-center gap-3">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  className="relative h-10 w-10 rounded-full ring-2 ring-slate-200 hover:ring-green-500 transition-all duration-300"
-                >
-                  <Avatar className="h-10 w-10">
-                    <AvatarImage src="/placeholder-user.jpg" alt="Cadete" />
-                    <AvatarFallback className="bg-gradient-to-br from-green-500 to-green-700 text-white font-bold text-sm">
-                      CD
-                    </AvatarFallback>
-                  </Avatar>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-64 p-2" align="end" forceMount>
-                <DropdownMenuLabel className="font-normal pb-3">
-                  <div className="flex flex-col space-y-2">
-                    <p className="text-base font-bold leading-none text-slate-900">
-                      Cadete Ingeniería
-                    </p>
-                    <p className="text-xs leading-none text-slate-500">
-                      u2024.sistemas@unefa.edu.ve
-                    </p>
-                  </div>
-                </DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem className="cursor-pointer py-2.5">
-                  <User className="mr-3 h-4 w-4" /> Perfil
-                </DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer py-2.5">
-                  <Settings className="mr-3 h-4 w-4" /> Configuración
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem className="text-red-600 focus:text-red-600 cursor-pointer py-2.5 font-semibold">
-                  <LogOut className="mr-3 h-4 w-4" /> Salir
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            {/* CTA Button - Desktop */}
+            <Button
+              asChild
+              className="hidden md:inline-flex bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300"
+            >
+              <Link to="/contacto">
+                Contacto <ExternalLink className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
 
             {/* MOBILE MENU */}
             <Sheet>
@@ -177,25 +140,86 @@ export default function MainLayout() {
       </header>
 
       <main className="flex-1">
-        <div className="w-full py-10 animate-in fade-in slide-in-from-bottom-6 duration-700">
+        <div className="w-full animate-in fade-in duration-500">
           <Outlet />
         </div>
       </main>
 
-      <footer className="border-t border-slate-200/50 bg-gradient-to-br from-slate-50 to-white py-8 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col items-center justify-between gap-4 md:flex-row">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-blue-100 rounded-lg">
-              <Shield className="h-4 w-4 text-blue-700" />
+      <footer className="border-t border-slate-200/50 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-16 mt-auto">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+            {/* Logo y descripción */}
+            <div className="md:col-span-1 space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="p-2.5 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-xl shadow-lg">
+                  <Shield className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <span className="font-black text-xl text-white">UNEFA</span>
+                  <span className="block text-xs text-slate-400">Defensa Integral</span>
+                </div>
+              </div>
+              <p className="text-sm text-slate-400 leading-relaxed">
+                Formando ciudadanos comprometidos con la seguridad, defensa y desarrollo integral de la Nación.
+              </p>
             </div>
-            <p className="text-sm text-slate-600">
-              © 2026 Cátedra de Defensa Integral -{" "}
-              <span className="font-bold text-blue-700">UNEFA Miranda</span>
+
+            {/* Contenido */}
+            <div className="space-y-4">
+              <h4 className="font-bold text-white text-sm uppercase tracking-wider">Contenido</h4>
+              <nav className="flex flex-col space-y-3">
+                <Link to="/doctrina" className="text-sm text-slate-400 hover:text-white transition-colors">
+                  Doctrina Militar
+                </Link>
+                <Link to="/ambitos" className="text-sm text-slate-400 hover:text-white transition-colors">
+                  Ámbitos de Acción
+                </Link>
+                <Link to="/union" className="text-sm text-slate-400 hover:text-white transition-colors">
+                  Unión Cívico-Militar
+                </Link>
+              </nav>
+            </div>
+
+            {/* Recursos */}
+            <div className="space-y-4">
+              <h4 className="font-bold text-white text-sm uppercase tracking-wider">Recursos</h4>
+              <nav className="flex flex-col space-y-3">
+                <Link to="/calendario" className="text-sm text-slate-400 hover:text-white transition-colors">
+                  Calendario
+                </Link>
+                <Link to="/recursos" className="text-sm text-slate-400 hover:text-white transition-colors">
+                  Biblioteca
+                </Link>
+                <Link to="/glosario" className="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-2">
+                  <BookOpen className="h-3.5 w-3.5" /> Glosario
+                </Link>
+              </nav>
+            </div>
+
+            {/* Institución */}
+            <div className="space-y-4">
+              <h4 className="font-bold text-white text-sm uppercase tracking-wider">Institución</h4>
+              <nav className="flex flex-col space-y-3">
+                <Link to="/acerca" className="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-2">
+                  <Info className="h-3.5 w-3.5" /> Acerca de UNEFA
+                </Link>
+                <Link to="/contacto" className="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-2">
+                  <Mail className="h-3.5 w-3.5" /> Contacto
+                </Link>
+              </nav>
+            </div>
+          </div>
+
+          <Separator className="bg-slate-700/50 mb-8" />
+
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+            <p className="text-sm text-slate-500">
+              © 2026 Cátedra de Defensa Integral · <span className="text-blue-400 font-semibold">UNEFA Miranda</span>
+            </p>
+            <p className="text-xs text-slate-600">
+              Todos los derechos reservados
             </p>
           </div>
-          <p className="text-xs text-slate-500">
-            Formando ciudadanos comprometidos con la Patria
-          </p>
         </div>
       </footer>
 

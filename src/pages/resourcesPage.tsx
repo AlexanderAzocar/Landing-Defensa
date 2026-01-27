@@ -1,12 +1,6 @@
-import { FileText, Download, Book, HelpCircle } from "lucide-react";
+import { FileText, Download, Book, HelpCircle, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Accordion,
   AccordionContent,
@@ -19,12 +13,12 @@ interface Resource {
   title: string;
   type: string;
   size: string;
-  category: "Legal" | "Manual";
+  category: "Legal" | "Manual" | "Guía";
 }
 
 const resources: Resource[] = [
   {
-    title: "Constitución (CRBV)",
+    title: "Constitución de la República Bolivariana de Venezuela",
     type: "PDF",
     size: "2.4 MB",
     category: "Legal",
@@ -42,134 +36,175 @@ const resources: Resource[] = [
     category: "Manual",
   },
   {
-    title: "Concepto Estratégico Militar",
+    title: "Concepto Estratégico Militar de la Nación",
     type: "PDF",
     size: "3.2 MB",
     category: "Manual",
   },
+  {
+    title: "Ley Orgánica de Seguridad de la Nación",
+    type: "PDF",
+    size: "1.2 MB",
+    category: "Legal",
+  },
+  {
+    title: "Guía de Estudio - Defensa Integral",
+    type: "PDF",
+    size: "4.5 MB",
+    category: "Guía",
+  },
 ];
+
+const faqs = [
+  {
+    question: "¿Cuál es el uniforme reglamentario?",
+    answer: "Para clases teóricas: Uniforme diario (Blue Jeans, chemise blanca UNEFA, zapatos negros). Para orden cerrado: Mono deportivo de la universidad o uniforme patriota según instrucción del docente.",
+  },
+  {
+    question: "¿Cómo se evalúa la materia?",
+    answer: "La evaluación es continua: 40% práctica (asistencia a paradas, orden cerrado), 30% teórica (exámenes escritos) y 30% trabajos de investigación y defensa.",
+  },
+  {
+    question: "¿Qué hago si falto a una práctica?",
+    answer: "Debe presentar justificativo médico o laboral sellado ante la coordinación de la carrera en un lapso no mayor a 48 horas después de la actividad.",
+  },
+  {
+    question: "¿Dónde puedo consultar mis notas?",
+    answer: "Las notas parciales se publican en el sistema SACE de la universidad. Las notas definitivas se entregan al final del semestre en la coordinación de la carrera.",
+  },
+];
+
+const categoryColors = {
+  Legal: "bg-blue-100 text-blue-700",
+  Manual: "bg-emerald-100 text-emerald-700",
+  Guía: "bg-amber-100 text-amber-700",
+};
 
 export default function ResourcesPage() {
   return (
-    <div className="space-y-10 max-w-6xl mx-auto px-4">
-      <div className="text-center space-y-4 animate-in fade-in slide-in-from-top duration-700">
-        <h2 className="text-4xl md:text-5xl font-black text-slate-900">
-          Biblioteca{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">
-            Táctica
-          </span>
-        </h2>
-        <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-          Documentación fundamental para la formación del cadete.
-        </p>
-      </div>
+    <div className="space-y-0">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <Badge className="bg-cyan-500/20 text-cyan-300 hover:bg-cyan-500/20 mb-6">
+            <Book className="h-3 w-3 mr-2" />
+            Material de Apoyo
+          </Badge>
+          <h1 className="text-4xl sm:text-5xl font-black text-white mb-4">
+            Biblioteca de{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+              Recursos
+            </span>
+          </h1>
+          <p className="text-slate-300 text-lg max-w-2xl mx-auto">
+            Documentación oficial, manuales y guías para tu formación académica
+          </p>
+        </div>
+      </section>
 
-      {/* SECCIÓN DE DESCARGAS */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <Card className="border-t-4 border-t-blue-600 shadow-soft hover:shadow-strong transition-all duration-500 bg-white/80 backdrop-blur-sm">
-          <CardHeader className="space-y-4">
-            <CardTitle className="flex items-center gap-3 text-2xl">
-              <div className="p-3 bg-blue-100 rounded-xl">
-                <Book className="h-6 w-6 text-blue-700" />
-              </div>
-              Material de Estudio
-            </CardTitle>
-            <CardDescription className="text-base">
-              Leyes, reglamentos y guías oficiales.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="grid gap-4">
-            {resources.map((res, i) => (
-              <div
-                key={i}
-                className="flex items-center justify-between p-4 border border-slate-200/50 rounded-xl hover:bg-gradient-to-r hover:from-slate-50 hover:to-blue-50/30 transition-all duration-300 group hover:shadow-md hover:-translate-y-0.5"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-slate-100 rounded-xl group-hover:bg-blue-100 transition-colors">
-                    <FileText className="h-6 w-6 text-slate-600 group-hover:text-blue-700 transition-colors" />
+      {/* Resources Section */}
+      <section className="bg-white py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Downloads Card */}
+            <Card className="border-0 shadow-lg">
+              <CardHeader className="border-b border-slate-100 pb-6">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 bg-blue-100 rounded-xl">
+                    <FileText className="h-6 w-6 text-blue-700" />
                   </div>
                   <div>
-                    <p className="font-bold text-sm text-slate-900">
-                      {res.title}
-                    </p>
-                    <div className="flex gap-2 text-xs text-slate-500 mt-1.5 items-center">
-                      <Badge
-                        variant="outline"
-                        className="text-[10px] font-semibold"
-                      >
-                        {res.category}
-                      </Badge>
-                      <span className="font-medium">{res.size}</span>
-                    </div>
+                    <CardTitle className="text-xl">Material de Estudio</CardTitle>
+                    <p className="text-slate-500 text-sm mt-1">Documentos descargables</p>
                   </div>
                 </div>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="hover:bg-blue-100 hover:text-blue-700 transition-colors"
-                >
-                  <Download className="h-5 w-5" />
-                </Button>
-              </div>
-            ))}
-          </CardContent>
-        </Card>
+              </CardHeader>
+              <CardContent className="p-6 space-y-3">
+                {resources.map((res, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center justify-between p-4 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors group"
+                  >
+                    <div className="flex items-center gap-4 flex-1 min-w-0">
+                      <div className="p-2.5 bg-white rounded-lg shadow-sm">
+                        <FileText className="h-5 w-5 text-slate-600" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="font-semibold text-slate-900 text-sm truncate">
+                          {res.title}
+                        </p>
+                        <div className="flex items-center gap-2 mt-1">
+                          <Badge className={`${categoryColors[res.category]} text-xs`}>
+                            {res.category}
+                          </Badge>
+                          <span className="text-xs text-slate-500">{res.size}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-slate-500 hover:text-blue-700 hover:bg-blue-50"
+                    >
+                      <Download className="h-4 w-4" />
+                    </Button>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
 
-        {/* SECCIÓN DE PREGUNTAS FRECUENTES (FAQs) */}
-        <Card className="border-t-4 border-t-cyan-600 shadow-soft hover:shadow-strong transition-all duration-500 bg-white/80 backdrop-blur-sm">
-          <CardHeader className="space-y-4">
-            <CardTitle className="flex items-center gap-3 text-2xl">
-              <div className="p-3 bg-cyan-100 rounded-xl">
-                <HelpCircle className="h-6 w-6 text-cyan-700" />
-              </div>
-              Dudas Comunes
-            </CardTitle>
-            <CardDescription className="text-base">
-              Información sobre uniforme y evaluación.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem
-                value="item-1"
-                className="border-b border-slate-200"
-              >
-                <AccordionTrigger className="text-left font-semibold hover:text-blue-700 transition-colors">
-                  ¿Cuál es el uniforme reglamentario?
-                </AccordionTrigger>
-                <AccordionContent className="text-slate-600 leading-relaxed pt-3">
-                  Para clases teóricas: Uniforme diario (Blue Jeans, chemise
-                  blanca UNEFA, zapatos negros). Para orden cerrado: Mono
-                  deportivo de la universidad o uniforme patriota según
-                  instrucción.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem
-                value="item-2"
-                className="border-b border-slate-200"
-              >
-                <AccordionTrigger className="text-left font-semibold hover:text-blue-700 transition-colors">
-                  ¿Cómo se evalúa la materia?
-                </AccordionTrigger>
-                <AccordionContent className="text-slate-600 leading-relaxed pt-3">
-                  La evaluación es continua: 40% práctica (asistencia a paradas,
-                  orden cerrado), 30% teórica (exámenes escritos) y 30% trabajos
-                  de investigación y defensa.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-3">
-                <AccordionTrigger className="text-left font-semibold hover:text-blue-700 transition-colors">
-                  ¿Qué hago si falto a una práctica?
-                </AccordionTrigger>
-                <AccordionContent className="text-slate-600 leading-relaxed pt-3">
-                  Debe presentar justificativo médico o laboral sellado ante la
-                  coordinación de la carrera en un lapso no mayor a 48 horas.
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </CardContent>
-        </Card>
-      </div>
+            {/* FAQ Card */}
+            <Card className="border-0 shadow-lg">
+              <CardHeader className="border-b border-slate-100 pb-6">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 bg-cyan-100 rounded-xl">
+                    <HelpCircle className="h-6 w-6 text-cyan-700" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-xl">Preguntas Frecuentes</CardTitle>
+                    <p className="text-slate-500 text-sm mt-1">Dudas comunes resueltas</p>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="p-6">
+                <Accordion type="single" collapsible className="w-full">
+                  {faqs.map((faq, i) => (
+                    <AccordionItem
+                      key={i}
+                      value={`item-${i}`}
+                      className="border-b border-slate-100 last:border-0"
+                    >
+                      <AccordionTrigger className="text-left font-semibold text-slate-900 hover:text-blue-700 transition-colors py-4">
+                        {faq.question}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-slate-600 leading-relaxed pb-4">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Help Section */}
+      <section className="bg-slate-50 py-16">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h3 className="text-2xl font-bold text-slate-900 mb-4">
+            ¿Necesitas más información?
+          </h3>
+          <p className="text-slate-600 mb-6">
+            Si tienes alguna duda adicional, no dudes en contactarnos
+          </p>
+          <Button asChild className="bg-blue-600 hover:bg-blue-700">
+            <a href="/contacto">
+              Ir a Contacto <ExternalLink className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
+        </div>
+      </section>
     </div>
   );
 }

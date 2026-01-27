@@ -1,8 +1,7 @@
-import { MapPin, Clock, AlertCircle } from "lucide-react";
+import { MapPin, Clock, Calendar, AlertCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
-// Tipado para eventos
 interface Evento {
   id: number;
   date: string;
@@ -43,86 +42,126 @@ const events: Evento[] = [
     time: "08:00 AM",
     type: "Ceremonia",
   },
+  {
+    id: 4,
+    date: "24 FEB",
+    day: "Lunes",
+    title: "Entrega de Trabajo: Doctrina Bolivariana",
+    location: "Plataforma Virtual",
+    time: "11:59 PM",
+    type: "Evaluación",
+  },
 ];
+
+const typeColors = {
+  Evaluación: "bg-red-100 text-red-700 border-red-200",
+  Práctica: "bg-blue-100 text-blue-700 border-blue-200",
+  Ceremonia: "bg-emerald-100 text-emerald-700 border-emerald-200",
+};
 
 export default function CalendarPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 space-y-10">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-4">
-        <div className="space-y-2 animate-in fade-in slide-in-from-left duration-700">
-          <h2 className="text-4xl font-black text-slate-900">
-            Cronograma 1-2026
-          </h2>
-          <p className="text-slate-600 text-lg">
-            Planificación de actividades del semestre en curso.
+    <div className="space-y-0">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 py-20">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/20 mb-6">
+            <Calendar className="h-3 w-3 mr-2" />
+            Semestre 1-2026
+          </Badge>
+          <h1 className="text-4xl sm:text-5xl font-black text-white mb-4">
+            Calendario Académico
+          </h1>
+          <p className="text-slate-300 text-lg max-w-2xl mx-auto">
+            Planificación de actividades, evaluaciones y ceremonias del semestre
           </p>
         </div>
-        <div className="flex items-center gap-3 bg-gradient-to-r from-blue-50 to-cyan-50 text-blue-800 px-6 py-3.5 rounded-xl border border-blue-200/50 text-sm shadow-md animate-in fade-in slide-in-from-right duration-700">
-          <AlertCircle className="h-5 w-5" />
-          <span className="font-semibold">Próxima: 28 Enero</span>
+      </section>
+
+      {/* Alert Bar */}
+      <section className="bg-gradient-to-r from-blue-600 to-cyan-600">
+        <div className="max-w-4xl mx-auto px-4 py-4">
+          <div className="flex items-center justify-center gap-3 text-white">
+            <AlertCircle className="h-5 w-5" />
+            <span className="font-semibold">Próxima actividad: 28 de Enero - Práctica de Orden Cerrado</span>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div className="space-y-6">
-        {events.map((evt, idx) => (
-          <Card
-            key={evt.id}
-            className={`transition-all hover:shadow-strong duration-500 border-l-[6px] animate-in slide-in-from-bottom-4 ${
-              evt.urgent
-                ? "border-l-blue-500 bg-blue-50/30"
-                : "border-l-cyan-600 bg-cyan-50/20"
-            }`}
-            style={{ animationDelay: `${idx * 100}ms` }}
-          >
-            <CardContent className="p-8 flex flex-col sm:flex-row gap-8 items-start sm:items-center hover:scale-[1.01] transition-transform duration-300">
-              {/* FECHA */}
-              <div className="flex flex-col items-center justify-center min-w-[90px] text-center bg-white rounded-xl p-4 shadow-md">
-                <span className="text-3xl font-black text-slate-800">
-                  {evt.date.split(" ")[0]}
-                </span>
-                <span className="text-sm font-bold text-slate-500 uppercase tracking-wider">
-                  {evt.date.split(" ")[1]}
-                </span>
-                <span className="text-xs text-slate-400 mt-1.5 font-medium">
-                  {evt.day}
-                </span>
-              </div>
-
-              {/* DETALLES */}
-              <div className="flex-1 space-y-3">
-                <div className="flex justify-between items-start gap-4">
-                  <h3 className="font-bold text-xl text-slate-900 leading-tight">
-                    {evt.title}
-                  </h3>
-                  <Badge
-                    variant={
-                      evt.type === "Evaluación" ? "destructive" : "secondary"
-                    }
-                    className="text-xs font-semibold px-3 py-1"
-                  >
-                    {evt.type}
-                  </Badge>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-4 text-sm text-slate-600">
-                  <div className="flex items-center gap-2 font-medium">
-                    <div className="p-1.5 bg-cyan-100 rounded-md">
-                      <Clock className="h-4 w-4 text-cyan-700" />
+      {/* Events List */}
+      <section className="bg-slate-50 py-16">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="space-y-4">
+            {events.map((evt) => (
+              <Card
+                key={evt.id}
+                className={`border-0 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden ${
+                  evt.urgent ? "ring-2 ring-blue-500 ring-offset-2" : ""
+                }`}
+              >
+                <CardContent className="p-0">
+                  <div className="flex flex-col sm:flex-row">
+                    {/* Date Column */}
+                    <div className="bg-slate-900 text-white p-6 sm:w-32 flex flex-col items-center justify-center text-center">
+                      <span className="text-3xl font-black">{evt.date.split(" ")[0]}</span>
+                      <span className="text-sm font-semibold text-slate-300 uppercase tracking-wider">
+                        {evt.date.split(" ")[1]}
+                      </span>
+                      <span className="text-xs text-slate-400 mt-1">{evt.day}</span>
                     </div>
-                    {evt.time}
-                  </div>
-                  <div className="flex items-center gap-2 font-medium">
-                    <div className="p-1.5 bg-blue-100 rounded-md">
-                      <MapPin className="h-4 w-4 text-blue-700" />
+
+                    {/* Details Column */}
+                    <div className="flex-1 p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-3">
+                          <h3 className="font-bold text-lg text-slate-900">{evt.title}</h3>
+                          {evt.urgent && (
+                            <Badge className="bg-blue-600 text-white text-xs">Próximo</Badge>
+                          )}
+                        </div>
+                        <div className="flex flex-wrap gap-4 text-sm text-slate-600">
+                          <div className="flex items-center gap-2">
+                            <Clock className="h-4 w-4 text-slate-400" />
+                            {evt.time}
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <MapPin className="h-4 w-4 text-slate-400" />
+                            {evt.location}
+                          </div>
+                        </div>
+                      </div>
+                      <Badge className={`${typeColors[evt.type]} border font-semibold`}>
+                        {evt.type}
+                      </Badge>
                     </div>
-                    {evt.location}
                   </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Legend */}
+      <section className="bg-white py-12">
+        <div className="max-w-4xl mx-auto px-4">
+          <h3 className="text-lg font-bold text-slate-900 mb-4 text-center">Tipos de actividades</h3>
+          <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-red-500" />
+              <span className="text-sm text-slate-600">Evaluación</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-blue-500" />
+              <span className="text-sm text-slate-600">Práctica</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-emerald-500" />
+              <span className="text-sm text-slate-600">Ceremonia</span>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

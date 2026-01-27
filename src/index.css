@@ -48,6 +48,14 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
+  /* Semantic Status Colors */
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+
   /* Colores Institucionales UNEFA */
   --color-olive: var(--olive);
   --color-olive-dark: var(--olive-dark);
@@ -55,6 +63,54 @@
   --color-patriot-red: var(--patriot-red);
   --color-unefa-blue: var(--unefa-blue);
   --color-gold: var(--gold);
+
+  /* Extended Color Scales - Olive (Military Green) */
+  --color-olive-50: var(--olive-50);
+  --color-olive-100: var(--olive-100);
+  --color-olive-200: var(--olive-200);
+  --color-olive-300: var(--olive-300);
+  --color-olive-400: var(--olive-400);
+  --color-olive-500: var(--olive-500);
+  --color-olive-600: var(--olive-600);
+  --color-olive-700: var(--olive-700);
+  --color-olive-800: var(--olive-800);
+  --color-olive-900: var(--olive-900);
+
+  /* Extended Color Scales - UNEFA Blue */
+  --color-unefa-blue-50: var(--unefa-blue-50);
+  --color-unefa-blue-100: var(--unefa-blue-100);
+  --color-unefa-blue-200: var(--unefa-blue-200);
+  --color-unefa-blue-300: var(--unefa-blue-300);
+  --color-unefa-blue-400: var(--unefa-blue-400);
+  --color-unefa-blue-500: var(--unefa-blue-500);
+  --color-unefa-blue-600: var(--unefa-blue-600);
+  --color-unefa-blue-700: var(--unefa-blue-700);
+  --color-unefa-blue-800: var(--unefa-blue-800);
+  --color-unefa-blue-900: var(--unefa-blue-900);
+
+  /* Extended Color Scales - Patriot Red */
+  --color-patriot-red-50: var(--patriot-red-50);
+  --color-patriot-red-100: var(--patriot-red-100);
+  --color-patriot-red-200: var(--patriot-red-200);
+  --color-patriot-red-300: var(--patriot-red-300);
+  --color-patriot-red-400: var(--patriot-red-400);
+  --color-patriot-red-500: var(--patriot-red-500);
+  --color-patriot-red-600: var(--patriot-red-600);
+  --color-patriot-red-700: var(--patriot-red-700);
+  --color-patriot-red-800: var(--patriot-red-800);
+  --color-patriot-red-900: var(--patriot-red-900);
+
+  /* Extended Color Scales - Gold */
+  --color-gold-50: var(--gold-50);
+  --color-gold-100: var(--gold-100);
+  --color-gold-200: var(--gold-200);
+  --color-gold-300: var(--gold-300);
+  --color-gold-400: var(--gold-400);
+  --color-gold-500: var(--gold-500);
+  --color-gold-600: var(--gold-600);
+  --color-gold-700: var(--gold-700);
+  --color-gold-800: var(--gold-800);
+  --color-gold-900: var(--gold-900);
 }
 
 :root {
@@ -67,6 +123,62 @@
   --patriot-red: #c41e3a;
   --unefa-blue: #003366;
   --gold: #d4af37;
+
+  /* Semantic Status Colors */
+  --success: #16a34a;
+  --success-foreground: #ffffff;
+  --warning: #d97706;
+  --warning-foreground: #ffffff;
+  --info: #0284c7;
+  --info-foreground: #ffffff;
+
+  /* Extended Olive Scale */
+  --olive-50: #f6f7f0;
+  --olive-100: #e8ebda;
+  --olive-200: #d1d8b6;
+  --olive-300: #b4c087;
+  --olive-400: #98a75f;
+  --olive-500: #7a8a42;
+  --olive-600: #4b5320;
+  --olive-700: #3d4419;
+  --olive-800: #2d3311;
+  --olive-900: #1e2209;
+
+  /* Extended UNEFA Blue Scale */
+  --unefa-blue-50: #e6f0fa;
+  --unefa-blue-100: #b3d1f0;
+  --unefa-blue-200: #80b3e6;
+  --unefa-blue-300: #4d94dc;
+  --unefa-blue-400: #1a75d2;
+  --unefa-blue-500: #005cb3;
+  --unefa-blue-600: #003366;
+  --unefa-blue-700: #002952;
+  --unefa-blue-800: #001f3d;
+  --unefa-blue-900: #001429;
+
+  /* Extended Patriot Red Scale */
+  --patriot-red-50: #fdf2f4;
+  --patriot-red-100: #fce4e8;
+  --patriot-red-200: #f9c9d2;
+  --patriot-red-300: #f49dac;
+  --patriot-red-400: #ec6a7e;
+  --patriot-red-500: #e03e54;
+  --patriot-red-600: #c41e3a;
+  --patriot-red-700: #a41830;
+  --patriot-red-800: #881628;
+  --patriot-red-900: #731626;
+
+  /* Extended Gold Scale */
+  --gold-50: #fdf9eb;
+  --gold-100: #f9f0cc;
+  --gold-200: #f3e19a;
+  --gold-300: #ebce5f;
+  --gold-400: #e4bc33;
+  --gold-500: #d4af37;
+  --gold-600: #b8922b;
+  --gold-700: #936f24;
+  --gold-800: #795824;
+  --gold-900: #664923;
 
   /* Tema Claro - Institucional */
   --background: #fafafa;
@@ -135,6 +247,14 @@
   --sidebar-accent-foreground: #e8e8e8;
   --sidebar-border: #2d3311;
   --sidebar-ring: #d4af37;
+
+  /* Semantic Status Colors - Dark Mode */
+  --success: #22c55e;
+  --success-foreground: #ffffff;
+  --warning: #f59e0b;
+  --warning-foreground: #ffffff;
+  --info: #38bdf8;
+  --info-foreground: #0c4a6e;
 }
 
 /* ========================================

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   Coins,
   Users,
@@ -6,15 +7,20 @@ import {
   Globe2,
   Leaf,
   Swords,
+  ArrowRight,
+  Target,
   type LucideIcon,
 } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
-// Interfaz para los datos de cada ámbito
 interface AmbitoItem {
   title: string;
   icon: LucideIcon;
-  color: string;
+  bgColor: string;
+  iconColor: string;
+  hoverBorder: string;
   desc: string;
 }
 
@@ -22,103 +28,154 @@ const ambitos: AmbitoItem[] = [
   {
     title: "Económico",
     icon: Coins,
-    color: "text-blue-700 bg-blue-100",
+    bgColor: "bg-blue-100",
+    iconColor: "text-blue-600",
+    hoverBorder: "hover:border-blue-400",
     desc: "Garantizar la producción y distribución de bienes estratégicos para asegurar la independencia nacional frente a bloqueos.",
   },
   {
     title: "Social",
     icon: Users,
-    color: "text-cyan-700 bg-cyan-100",
+    bgColor: "bg-cyan-100",
+    iconColor: "text-cyan-600",
+    hoverBorder: "hover:border-cyan-400",
     desc: "Justicia social, sistema de salud público, educación gratuita y la protección de los derechos humanos fundamentales.",
   },
   {
     title: "Político",
     icon: Landmark,
-    color: "text-slate-700 bg-slate-100",
+    bgColor: "bg-slate-100",
+    iconColor: "text-slate-600",
+    hoverBorder: "hover:border-slate-400",
     desc: "Preservación de la estabilidad institucional, el respeto a la soberanía y el ejercicio de la democracia participativa.",
   },
   {
     title: "Cultural",
     icon: Palette,
-    color: "text-blue-600 bg-blue-100",
+    bgColor: "bg-purple-100",
+    iconColor: "text-purple-600",
+    hoverBorder: "hover:border-purple-400",
     desc: "Defensa de la identidad nacional, valores históricos, idioma y patrimonio inmaterial frente a la transculturización.",
   },
   {
     title: "Geográfico",
     icon: Globe2,
-    color: "text-cyan-600 bg-cyan-100",
+    bgColor: "bg-emerald-100",
+    iconColor: "text-emerald-600",
+    hoverBorder: "hover:border-emerald-400",
     desc: "Integridad territorial, control de fronteras, fachada atlántica y la soberanía sobre el Esequibo.",
   },
   {
     title: "Ambiental",
     icon: Leaf,
-    color: "text-slate-600 bg-slate-100",
+    bgColor: "bg-green-100",
+    iconColor: "text-green-600",
+    hoverBorder: "hover:border-green-400",
     desc: "Preservación de la biodiversidad, cuencas hidrográficas y recursos naturales como activos estratégicos de la nación.",
   },
   {
     title: "Militar",
     icon: Swords,
-    color: "text-blue-800 bg-blue-200",
+    bgColor: "bg-red-100",
+    iconColor: "text-red-600",
+    hoverBorder: "hover:border-red-400",
     desc: "Preparación, organización y equipamiento de la FANB junto a la Milicia Bolivariana para la defensa armada.",
   },
 ];
 
 export default function AmbitosPage() {
   return (
-    <div className="space-y-12 max-w-7xl mx-auto px-4">
-      <div className="text-center space-y-6 mb-12 animate-in fade-in slide-in-from-top-4 duration-700">
-        <div className="inline-block">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-tight">
-            Ámbitos de la
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600 mt-1">
+    <div className="space-y-0">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 py-20">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <Badge className="bg-cyan-500/20 text-cyan-300 hover:bg-cyan-500/20 mb-6">
+            <Target className="h-3 w-3 mr-2" />
+            Estrategia Nacional
+          </Badge>
+          <h1 className="text-4xl sm:text-5xl font-black text-white mb-4">
+            Ámbitos de la{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
               Defensa Integral
             </span>
-          </h2>
+          </h1>
+          <p className="text-slate-300 text-lg max-w-2xl mx-auto">
+            La seguridad de la Nación es un concepto multidimensional que abarca
+            siete esferas estratégicas interconectadas
+          </p>
         </div>
-        <p className="text-slate-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-          La seguridad de la Nación es un concepto{" "}
-          <span className="font-bold text-blue-700">multidimensional</span> que
-          abarca siete esferas estratégicas interconectadas.
-        </p>
-        <div className="flex justify-center gap-2 mt-6">
-          {[1, 2, 3, 4, 5, 6, 7].map((i) => (
-            <div
-              key={i}
-              className="w-2 h-2 rounded-full bg-blue-600"
-              style={{ opacity: 1 - i * 0.1 }}
-            ></div>
-          ))}
+      </section>
+
+      {/* Stats Bar */}
+      <section className="bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <div className="flex flex-wrap justify-center gap-8 md:gap-16">
+            <div className="text-center">
+              <div className="text-3xl font-black text-blue-600">7</div>
+              <div className="text-sm text-slate-600">Ámbitos estratégicos</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-black text-cyan-600">326</div>
+              <div className="text-sm text-slate-600">Artículo CRBV</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-black text-emerald-600">100%</div>
+              <div className="text-sm text-slate-600">Interconectados</div>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-        {ambitos.map((item, index) => (
-          <Card
-            key={index}
-            className="relative overflow-hidden bg-white/80 backdrop-blur-sm border-slate-200/50 shadow-soft hover:shadow-strong transition-all duration-500 border-t-4 border-t-transparent hover:border-t-blue-600 group hover:-translate-y-2"
-            style={{ animationDelay: `${index * 100}ms` }}
-          >
-            {/* Efecto de gradiente animado en hover */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-blue-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-transparent group-hover:to-blue-500/5 transition-all duration-700"></div>
-
-            <CardHeader className="flex flex-row items-center gap-5 pb-4 relative z-10">
-              <div
-                className={`p-4 rounded-2xl transition-all duration-500 shadow-md group-hover:shadow-xl group-hover:scale-110 ${item.color}`}
+      {/* Ámbitos Grid */}
+      <section className="bg-slate-50 py-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {ambitos.map((item, index) => (
+              <Card
+                key={index}
+                className={`bg-white border-2 border-transparent ${item.hoverBorder} shadow-sm hover:shadow-lg transition-all duration-300 group`}
               >
-                <item.icon className="h-7 w-7" />
-              </div>
-              <CardTitle className="text-2xl font-bold text-slate-800 group-hover:text-blue-700 transition-colors duration-300">
-                {item.title}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="relative z-10">
-              <p className="text-slate-600 leading-relaxed text-base">
-                {item.desc}
-              </p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+                <CardContent className="p-6">
+                  <div className="flex items-start gap-4">
+                    <div className={`p-3 rounded-xl ${item.bgColor} group-hover:scale-110 transition-transform duration-300`}>
+                      <item.icon className={`h-6 w-6 ${item.iconColor}`} />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-bold text-slate-900 mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-slate-600 text-sm leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Info Section */}
+      <section className="bg-white py-20">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="bg-gradient-to-br from-blue-600 to-cyan-600 rounded-2xl p-8 md:p-12 text-white text-center">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">
+              Principio de Corresponsabilidad
+            </h3>
+            <p className="text-blue-100 text-lg mb-6 leading-relaxed max-w-2xl mx-auto">
+              Según el Artículo 326 de la CRBV, la seguridad y defensa de la Nación
+              es responsabilidad compartida entre el Estado y todos los ciudadanos,
+              abarcando estos siete ámbitos fundamentales.
+            </p>
+            <Button asChild variant="secondary" className="bg-white text-blue-700 hover:bg-slate-100">
+              <Link to="/union">
+                Explorar Unión Cívico-Militar <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

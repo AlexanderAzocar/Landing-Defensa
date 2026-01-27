@@ -1,143 +1,158 @@
-import { ShieldCheck, Users2, Building2, Gavel } from "lucide-react";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Link } from "react-router-dom";
+import { ShieldCheck, Users2, Building2, Gavel, ArrowRight, Quote } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 export default function UnionPage() {
+  const components = [
+    {
+      icon: ShieldCheck,
+      title: "FANB + Milicia",
+      color: "blue",
+      description: "El componente armado profesional junto al Componente Especial (Milicia Bolivariana), que agrupa al pueblo en armas.",
+    },
+    {
+      icon: Gavel,
+      title: "ODDI",
+      color: "cyan",
+      description: "Órganos de Dirección de Defensa Integral. Estructuras de mando que integran al gobierno y las fuerzas vivas a nivel Nacional, Regional, Municipal y Comunal.",
+    },
+    {
+      icon: Building2,
+      title: "Pueblo Organizado",
+      color: "slate",
+      description: "Consejos Comunales, Comunas, CLAP y organizaciones sociales que participan en la defensa no armada (alimentación, salud, inteligencia social).",
+    },
+  ];
+
   return (
-    <div className="max-w-7xl mx-auto px-4 space-y-16">
-      {/* ENCABEZADO */}
-      <div className="grid md:grid-cols-2 gap-16 items-center">
-        <div className="space-y-8 animate-in slide-in-from-left duration-700">
-          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-800 text-xs font-bold uppercase tracking-wider shadow-sm">
-            <Users2 className="h-4 w-4" /> Eje Fundamental
-          </div>
-          <h1 className="text-5xl md:text-6xl font-black text-slate-900 leading-[1.1]">
-            Unión
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600 mt-2">
-              Cívico-Militar
-            </span>
-          </h1>
-          <p className="text-xl text-slate-600 leading-relaxed">
-            La fusión estratégica de las fuerzas populares y la Fuerza Armada
-            Nacional Bolivariana (FANB) para garantizar la{" "}
-            <span className="font-bold text-blue-700">
-              independencia y soberanía
-            </span>{" "}
-            de la Nación.
-          </p>
+    <div className="space-y-0">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 lg:py-28">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <Badge className="bg-cyan-500/20 text-cyan-300 hover:bg-cyan-500/20">
+                <Users2 className="h-3 w-3 mr-2" />
+                Eje Fundamental
+              </Badge>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
+                Unión{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+                  Cívico-Militar
+                </span>
+              </h1>
+              <p className="text-xl text-slate-300 leading-relaxed">
+                La fusión estratégica de las fuerzas populares y la Fuerza Armada
+                Nacional Bolivariana (FANB) para garantizar la independencia y
+                soberanía de la Nación.
+              </p>
 
-          <Alert className="bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-300 shadow-md">
-            <ShieldCheck className="h-5 w-5 text-blue-700" />
-            <AlertTitle className="text-blue-900 font-bold ml-2 text-base">
-              Principio de Corresponsabilidad
-            </AlertTitle>
-            <AlertDescription className="text-blue-800 ml-2 text-sm mt-2 leading-relaxed">
-              “El Estado y la sociedad son corresponsables en la defensa y
-              desarrollo integral de la Nación.”{" "}
-              <span className="font-semibold">(CRBV Art. 326)</span>
-            </AlertDescription>
-          </Alert>
-        </div>
-
-        {/* COMPONENTE VISUAL / CITA */}
-        <div className="relative h-[400px] md:h-[500px] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 rounded-3xl overflow-hidden flex items-center justify-center shadow-strong animate-in zoom-in duration-700 group">
-          {/* Patrón de fondo mejorado */}
-          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/40 via-cyan-500/20 to-transparent group-hover:opacity-30 transition-opacity duration-500"></div>
-
-          {/* Grid pattern */}
-          <div className="absolute inset-0 opacity-[0.1] bg-[linear-gradient(rgba(59,130,246,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.08)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-
-          <div className="relative z-10 text-center p-10 max-w-lg">
-            <div className="mb-6">
-              <div className="inline-block p-4 bg-blue-600/10 backdrop-blur-sm rounded-2xl">
-                <ShieldCheck className="h-12 w-12 text-cyan-400" />
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/10">
+                <div className="flex items-start gap-3">
+                  <ShieldCheck className="h-6 w-6 text-cyan-400 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-bold text-white mb-1">
+                      Principio de Corresponsabilidad
+                    </h3>
+                    <p className="text-slate-300 text-sm leading-relaxed">
+                      "El Estado y la sociedad son corresponsables en la defensa y
+                      desarrollo integral de la Nación."
+                      <span className="text-cyan-400 font-semibold ml-1">(CRBV Art. 326)</span>
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
-            <blockquote className="text-3xl md:text-4xl font-serif italic text-white mb-8 leading-tight">
-              “El pueblo es al ejército, lo que el agua es al pez.”
-            </blockquote>
-            <cite className="text-cyan-400 font-bold not-italic uppercase tracking-[0.2em] text-sm">
-              — Mao Zedong
-            </cite>
-            <p className="text-slate-400 text-xs mt-3 font-medium">
-              (Referente doctrinario de la Guerra Popular)
-            </p>
+
+            {/* Quote Card */}
+            <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 md:p-10 border border-slate-700">
+              <Quote className="h-10 w-10 text-cyan-500/50 mb-4" />
+              <blockquote className="text-2xl md:text-3xl font-serif italic text-white mb-6 leading-relaxed">
+                "El pueblo es al ejército, lo que el agua es al pez."
+              </blockquote>
+              <div>
+                <cite className="text-cyan-400 font-bold not-italic text-sm uppercase tracking-wider">
+                  — Mao Zedong
+                </cite>
+                <p className="text-slate-500 text-xs mt-1">
+                  Referente doctrinario de la Guerra Popular
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <Separator />
+      {/* Components Section */}
+      <section className="bg-white py-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+              Sistema Defensivo Territorial
+            </h2>
+            <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+              ¿Cómo se organiza esta unión en la práctica?
+            </p>
+          </div>
 
-      {/* ESTRUCTURA ORGANIZATIVA (ODDI) */}
-      <div className="space-y-10">
-        <div className="text-center mb-10">
-          <h3 className="text-3xl md:text-4xl font-black text-slate-900 mb-3">
-            Sistema Defensivo Territorial
+          <div className="grid md:grid-cols-3 gap-8">
+            {components.map((item, index) => (
+              <Card
+                key={index}
+                className={`border-0 shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden`}
+              >
+                <div className={`h-2 ${
+                  item.color === "blue" ? "bg-blue-600" :
+                  item.color === "cyan" ? "bg-cyan-600" : "bg-slate-600"
+                }`} />
+                <CardContent className="p-8 text-center">
+                  <div className={`mx-auto w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 ${
+                    item.color === "blue" ? "bg-blue-100" :
+                    item.color === "cyan" ? "bg-cyan-100" : "bg-slate-100"
+                  }`}>
+                    <item.icon className={`h-8 w-8 ${
+                      item.color === "blue" ? "text-blue-600" :
+                      item.color === "cyan" ? "text-cyan-600" : "text-slate-600"
+                    }`} />
+                  </div>
+                  <h3 className="font-bold text-xl text-slate-900 mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    {item.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="bg-slate-50 py-16">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h3 className="text-2xl font-bold text-slate-900 mb-4">
+            Explora los recursos disponibles
           </h3>
-          <p className="text-slate-600 text-lg">
-            ¿Cómo se organiza esta unión en la práctica?
+          <p className="text-slate-600 mb-8">
+            Descarga materiales de estudio y consulta el calendario de actividades
           </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild className="bg-blue-600 hover:bg-blue-700">
+              <Link to="/recursos">
+                Ver Recursos <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link to="/calendario">
+                Calendario de Actividades
+              </Link>
+            </Button>
+          </div>
         </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* TARJETA 1 */}
-          <Card className="relative overflow-hidden hover:shadow-strong transition-all duration-500 border-t-[6px] border-t-blue-600 bg-white/80 backdrop-blur-sm hover:-translate-y-2 group">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-blue-500/5 group-hover:from-blue-500/5 group-hover:to-blue-500/10 transition-all duration-500"></div>
-            <CardContent className="pt-8 text-center space-y-6 relative z-10">
-              <div className="mx-auto w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
-                <ShieldCheck className="h-8 w-8 text-blue-700" />
-              </div>
-              <h4 className="font-black text-xl text-slate-900">
-                FANB + Milicia
-              </h4>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                El componente armado profesional junto al{" "}
-                <strong className="text-blue-700">
-                  Componente Especial (Milicia Bolivariana)
-                </strong>
-                , que agrupa al pueblo en armas.
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* TARJETA 2 */}
-          <Card className="relative overflow-hidden hover:shadow-strong transition-all duration-500 border-t-[6px] border-t-cyan-600 bg-white/80 backdrop-blur-sm hover:-translate-y-2 group">
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/5 group-hover:from-cyan-500/5 group-hover:to-cyan-500/10 transition-all duration-500"></div>
-            <CardContent className="pt-8 text-center space-y-6 relative z-10">
-              <div className="mx-auto w-16 h-16 bg-gradient-to-br from-cyan-100 to-cyan-200 rounded-2xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
-                <Gavel className="h-8 w-8 text-cyan-700" />
-              </div>
-              <h4 className="font-black text-xl text-slate-900">ODDI</h4>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                <strong className="text-cyan-700">
-                  Órganos de Dirección de Defensa Integral.
-                </strong>{" "}
-                Estructuras de mando que integran al gobierno y las fuerzas
-                vivas a nivel Nacional, Regional (Estadal), Municipal y Comunal.
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* TARJETA 3 */}
-          <Card className="relative overflow-hidden hover:shadow-strong transition-all duration-500 border-t-[6px] border-t-slate-600 bg-white/80 backdrop-blur-sm hover:-translate-y-2 group">
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-500/0 to-slate-500/5 group-hover:from-slate-500/5 group-hover:to-slate-500/10 transition-all duration-500"></div>
-            <CardContent className="pt-8 text-center space-y-6 relative z-10">
-              <div className="mx-auto w-16 h-16 bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
-                <Building2 className="h-8 w-8 text-slate-700" />
-              </div>
-              <h4 className="font-black text-xl text-slate-900">
-                Pueblo Organizado
-              </h4>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Consejos Comunales, Comunas, CLAP y organizaciones sociales que
-                participan en la defensa no armada (alimentación, salud,
-                inteligencia social).
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
+      </section>
     </div>
   );
 }
